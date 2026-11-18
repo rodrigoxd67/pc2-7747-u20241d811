@@ -1,14 +1,14 @@
 package com.campuslab.platform.u20241d811.shared.application.results;
 
 /**
- * Classifies application failures independently of the delivery protocol.
+ * Defines application failure types.
  * @author rodrigoxd67
  */
 public enum FailureType {
-    /** Input or business-rule validation failed. */
+    /** Invalid input or business rule. */
     VALIDATION,
-    /** An operation conflicts with an existing business record. */
+    /** Conflict with an existing record. */
     CONFLICT,
-    /** An unexpected internal failure prevented the operation. */
+    /** Unexpected internal failure. */
     UNEXPECTED
 }
