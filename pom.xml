@@ -5,14 +5,14 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>4.1.2</version>
+    <version>4.0.6</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>com.campuslab.acme</groupId>
-  <artifactId>pc2-7747-u20241d811</artifactId>
+  <groupId>com.campuslab.platform.u20241d811</groupId>
+  <artifactId>pc27747u20241d811</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>pc2-7747-u20241d811</name>
-  <description>pc2-7747-u20241d811</description>
+  <name>pc27747u20241d811</name>
+  <description>CampusLab equipment reservation API</description>
   <url/>
   <licenses>
     <license/>
