@@ -1,14 +1,13 @@
 package com.campuslab.platform.u20241d811.shared.application.results;
 
 /**
- * Represents an application outcome without depending on HTTP or persistence.
- * Exactly one outcome is returned: a successful value or a classified failure.
+ * Represents the success or failure of an application operation.
  * @param <T> successful result value type
  * @author rodrigoxd67
  */
 public sealed interface Result<T> permits Success, Failure {
     /**
-     * Creates a successful application outcome.
+     * Creates a successful result.
      * @param value successful value, required
      * @param <T> value type
      * @return successful outcome
@@ -19,10 +18,10 @@ public sealed interface Result<T> permits Success, Failure {
     }
 
     /**
-     * Creates a failure whose translation is deferred to the interfaces layer.
+     * Creates a failure with a type and message key.
      * @param type application failure classification
      * @param messageKey nonblank localization key
-     * @param <T> successful value type expected by the caller
+     * @param <T> result value type
      * @return failed outcome
      * @throws IllegalArgumentException if type or messageKey is invalid
      */
@@ -31,7 +30,7 @@ public sealed interface Result<T> permits Success, Failure {
     }
 
     /**
-     * Indicates whether the application operation succeeded.
+     * Checks whether this result is successful.
      * @return true for Success, false for Failure
      */
     default boolean isSuccess() {

@@ -1,15 +1,15 @@
 package com.campuslab.platform.u20241d811.shared.application.results;
 
 /**
- * Describes an application failure without an HTTP status or localized text.
- * @param <T> successful value type expected by the caller
+ * Stores a failure type and message key.
+ * @param <T> result value type
  * @param type failure classification
- * @param messageKey key to translate at the application boundary
+ * @param messageKey localization key
  * @author rodrigoxd67
  */
 public record Failure<T>(FailureType type, String messageKey) implements Result<T> {
     /**
-     * Validates the failure metadata required by the interfaces layer.
+     * Validates the failure type and message key.
      * @param type application failure classification, required
      * @param messageKey nonblank localization key
      * @throws IllegalArgumentException if metadata is missing
