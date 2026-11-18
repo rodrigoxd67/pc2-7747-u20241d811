@@ -2,6 +2,7 @@ package com.campuslab.platform.u20241d811.reservations.domain.model.aggregates;
 
 import com.campuslab.platform.u20241d811.reservations.domain.model.valueobjects.*;
 import com.campuslab.platform.u20241d811.shared.domain.model.aggregates.AbstractDomainAggregateRoot;
+import java.time.Instant;
 
 /**
  * Represents an equipment reservation and enforces its required values.
@@ -47,7 +48,35 @@ public class EquipmentReservation extends AbstractDomainAggregateRoot {
     public EquipmentReservation(ReservationCode reservationCode, LaboratoryId laboratoryId,
             ReservationPeriod reservationPeriod, EquipmentBatch equipmentBatch,
             Integer accessLevel, ReservationStatus status, String reservationNotes) {
-        super();
+        this(Instant.now(), reservationCode, laboratoryId, reservationPeriod, equipmentBatch,
+                accessLevel, status, reservationNotes);
+    }
+
+    private EquipmentReservation(Instant timestamp, ReservationCode reservationCode, LaboratoryId laboratoryId,
+            ReservationPeriod reservationPeriod, EquipmentBatch equipmentBatch,
+            Integer accessLevel, ReservationStatus status, String reservationNotes) {
+        this(null, timestamp, timestamp, reservationCode, laboratoryId, reservationPeriod, equipmentBatch,
+                accessLevel, status, reservationNotes);
+    }
+
+    /**
+     * Restores a reservation with its persistence identity and audit dates.
+     * @param id generated identity
+     * @param createdAt creation instant
+     * @param updatedAt last update instant
+     * @param reservationCode reservation code
+     * @param laboratoryId external laboratory identifier
+     * @param reservationPeriod reservation dates
+     * @param equipmentBatch equipment quantity and unit
+     * @param accessLevel required access level
+     * @param status reservation status
+     * @param reservationNotes optional notes
+     * @throws IllegalArgumentException if a required value is invalid
+     */
+    public EquipmentReservation(Long id, Instant createdAt, Instant updatedAt,
+            ReservationCode reservationCode, LaboratoryId laboratoryId, ReservationPeriod reservationPeriod,
+            EquipmentBatch equipmentBatch, Integer accessLevel, ReservationStatus status, String reservationNotes) {
+        super(id, createdAt, updatedAt);
         if (reservationCode == null) {
             throw new IllegalArgumentException("Reservation code is required.");
         }
