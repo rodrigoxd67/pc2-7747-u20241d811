@@ -1,4 +1,4 @@
-package com.campuslab.acme;
+package com.campuslab.platform.u20241d811;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
